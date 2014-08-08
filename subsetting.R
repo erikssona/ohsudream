@@ -14,6 +14,9 @@ express <- read.delim(expressfile, skip=2, header=TRUE, stringsAsFactors=FALSE)
 copynum <- read.delim(copynumfile, skip=2, header=TRUE, stringsAsFactors=FALSE)
 essentiality <- read.delim(essentialfile, skip=2, header=TRUE, stringsAsFactors=FALSE)
 
+# deal with NaN genes in expression set
+express <- express[which(express$Description!="NaN"),]
+
 ex.desc <- express$Description
 cn.desc <- copynum$Description
 # All the genes in the essentiality file
